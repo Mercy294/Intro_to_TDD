@@ -45,14 +45,14 @@ class TestUtils(unittest.TestCase):
 
     def test_iterables(self):
         users=['Mercy', 'Monica']
+        self.assertIn("Mercy", users)
         self.assertNotIn("Macklyn",users)
-        self.assertIn("Macklyn", users)
+        self.assertIn("Tracy", users)
 
     def test_exceptions(self):
         with self.assertRaises(ValueError):
+            parse_json(None)
+        with self.assertRaisesRegex(ValueError, "it does not have JSON string provided"):
             parse_json('')
         with self.assertRaises(ValueError):
             parse_json('{"alright": true}')
-
-if __name__ == "__main__":
-    unittest.main()
