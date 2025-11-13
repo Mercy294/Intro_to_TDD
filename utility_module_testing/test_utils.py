@@ -44,7 +44,7 @@ class TestUtils(unittest.TestCase):
         self.assertRegex("Good Morning", "Sir")
 
     def test_iterables(self):
-        users=['Mercy', 'Monica']
+        users = ['Mercy', 'Monica']
         self.assertIn("Mercy", users)
         self.assertNotIn("Macklyn",users)
         self.assertIn("Tracy", users)
