@@ -12,8 +12,8 @@ def filter_adults(users):
     return[user for user in users if user["age"] >= 18]
 
 
-def find_in_list(lst, value):
-    return value in lst
+def find_in_list(list, value):
+    return value in list
 
 
 def parse_json(json_string):
