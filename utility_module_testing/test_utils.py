@@ -20,7 +20,7 @@ class TestUtils(unittest.TestCase):
     def test_negation_passing(self):
         self.assertNotEqual(sum_numbers(1, 1), 3)
         self.assertIsNot(None, 0)
-        self.assertNotIn("z", "apple")
+        self.assertNotIn("z", "pineapple")
 
     def test_negation_failing(self):
         self.assertNotEqual(sum_numbers(1, 2), 3)
