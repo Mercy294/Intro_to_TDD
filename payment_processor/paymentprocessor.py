@@ -79,15 +79,7 @@ class PaymentProcessor:
         self._send_confirmation_email(user_id, final_amount, currency)
 
         # 8. Log analytics
-        self._log_analytics(
-            {
-                "user_id": user_id,
-                "amount": final_amount,
-                "currency": currency,
-                "method": payment_method,
-            }
-        )
-
+        self._log_analytics({"user_id": user_id,"amount": final_amount,"currency": currency,"method": payment_method})
         return transaction
 
     def _light_fraud_check(self, user_id, amount):
@@ -105,16 +97,12 @@ class PaymentProcessor:
             print("High risk")
 
     def _send_confirmation_email(self, user_id, amount, currency):
-        print(
-            f"Sending email to user {user_id}: Your payment of {amount} {currency} was successful."
-        )
+        print(f"Sending email to user {user_id}: Your payment of {amount} {currency} was successful.")
 
     def _log_analytics(self, data):
         print("Analytics event:", data)
 
-    def refund_payment(
-        self, transaction_id, user_id, reason, amount, currency, metadata
-    ):
+    def refund_payment(self, transaction_id, user_id, reason, amount, currency, metadata):
         refund = {
             "transaction_id": transaction_id,
             "user_id": user_id,
