@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
-from payment import PaymentProcessor
+from paymentprocessor import PaymentProcessor
 import datetime
 
 
