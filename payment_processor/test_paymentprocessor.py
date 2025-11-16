@@ -12,9 +12,7 @@ class TestPaymentProcessor(unittest.TestCase):
     def test_credit_card_validation_fails(self):
         metadata = {"card_number": "", "expiry": ""}
         with self.assertRaises(ValueError):
-            self.processor.process_payment(
-                300, "USD", 5, "credit_card", metadata, None, 0
-            )
+            self.processor.process_payment(300, "USD", 5, "credit_card", metadata, None, 0)
 
     def test_paypal_validation_fails(self):
         metadata = {"paypal_account": None}
@@ -23,23 +21,17 @@ class TestPaymentProcessor(unittest.TestCase):
 
     def test_summer20_discount(self):
         metadata = {"card_number": "294", "expiry": "12/26"}
-        result = self.processor.process_payment(
-            400, "USD", 1, "credit_card", metadata, "SUMMER20", 0
-        )
+        result = self.processor.process_payment(400, "USD", 1, "credit_card", metadata, "SUMMER20", 0)
         self.assertEqual(result["final_amount"], 320)
 
     def test_welcome10_discount(self):
         metadata = {"card_number": "180", "expiry": 12 / 25}
-        result = self.processor.process_payment(
-            230, "USD", 1, "credit_card", metadata, "WELCOME10", 0
-        )
+        result = self.processor.process_payment(230, "USD", 1, "credit_card", metadata, "WELCOME10", 0)
         self.assertEqual(result["final_amount"], 220)
 
     def test_currency_conversion(self):
         metadata = {"card_number": "200", "expiry": "12/25"}
-        result = self.processor.process_payment(
-            100, "EUR", 1, "credit_card", metadata, None, 0
-        )
+        result = self.processor.process_payment(100, "EUR", 1, "credit_card", metadata, None, 0)
         self.assertEqual(result["final_amount"], 100 * 1.2)
 
     def test_light_fraud_check_called(self):
@@ -61,7 +53,5 @@ class TestPaymentProcessor(unittest.TestCase):
 
     def test_refund_fee_calculation(self):
         metadata = {"reason": "test"}
-        result = self.processor.refund_payment(
-            "txn123", 1, "reason", 100, "USD", metadata
-        )
+        result = self.processor.refund_payment("txn123", 1, "reason", 100, "USD", metadata)
         self.assertEqual(result["net_amount"], 95)
